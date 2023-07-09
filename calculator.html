@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap-5.3.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        a:link, a:visited, a:hover, a:active{
+            text-decoration: none;
+        }
+        .text-red{
+            color: red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">MCA SGPA CALCULATOR</a>
+          <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>-->
+        </div>
+      </nav>
+      <div class="container mt-4">
+        <h1 class="text-center">MCA I Sem SGPA Calculator</h1>
+        <div class="card mt-3 p-4">
+            <div class="form-group">
+                <label for="mfca" class="m-2">Mathematical Foundation for Computer Applications (22MCA11)</label>
+                <input type="number" class="form-control m-2" id="mfca"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Operating System Concepts (22MCA12)</label>
+                <input type="number" class="form-control m-2" id="osc"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Data Structures (22MCA13)</label>
+                <input type="number" class="form-control m-2" id="ds"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Computer Networks (22MCA14)</label>
+                <input type="number" class="form-control m-2" id="cn"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Design and Analysis of Algorithms (22MCA15)</label>
+                <input type="number" class="form-control m-2" id="daa"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Data Structures with Algorithms Laboratory (22MCAL16)</label>
+                <input type="number" class="form-control m-2" id="dsal"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Computer Networks Laboratory (22MCAL17)</label>
+                <input type="number" class="form-control m-2" id="cnl"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Research Methodology and IPR (22RMI18)</label>
+                <input type="number" class="form-control m-2" id="rmipr"  placeholder="Enter your marks">
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary m-2" onclick="calculate()">Calculate</button>
+                <button class="btn btn-warning m-2" onclick="reset()">Reset</button>
+            </div>
+            <div class="" id="result"> 
+            </div>
+          </div>
+      </div>
+      <div class="container mt-3">
+            <h3 class="text-center" >
+                Made with <i class="fa fa-heart pulse text-red"></i> in <a href="https://github.com/yogeesh-s">Yogeesh S</a>
+          </h3>
+      </div>
+      <script>
+            function calculate(){
+                let mfca = parseInt(document.getElementById("mfca").value);
+                let osc = parseInt(document.getElementById("osc").value);
+                let ds = parseInt(document.getElementById("ds").value);
+                let cn = parseInt(document.getElementById("cn").value);
+                let daa = parseInt(document.getElementById("daa").value);
+                let dsal = parseInt(document.getElementById("dsal").value);
+                let cnl = parseInt(document.getElementById("cnl").value);
+                let rmipr = parseInt(document.getElementById("rmipr").value);
+
+                let sgpa = ( gradepoint(mfca)*3 + gradepoint(osc)*4 + gradepoint(ds)*4 + gradepoint(cn)*3 + gradepoint(daa)*4 + gradepoint(dsal)*2 + gradepoint(cnl)*2 + gradepoint(rmipr)*2) / 24;
+                sgpa = sgpa.toFixed(2);
+                alert("Your SGPA is: "+ sgpa)
+
+                document.getElementById("result").className="alert alert-success mt-3";
+                document.getElementById("result").innerHTML = "<b>Your SGPA is "+ sgpa +"<b>";
+                window.scrollTo(0, 200);
+            }
+            function gradepoint(marks){
+                if(marks>=90 && marks <=100)
+                    return 10;
+                else if(marks>=80 && marks <=89)
+                    return 9;
+                else if(marks>=70 && marks <=79)
+                    return 8;
+                else if(marks>=60 && marks <=69)
+                    return 7;
+                else if(marks>=55 && marks <=59)
+                    return 6;
+                else if(marks>=50 && marks <=54)
+                    return 5;
+                else
+                    return 0;
+            }
+            function reset(){
+                document.getElementById("mfca").value = "";
+                document.getElementById("osc").value = "";
+                document.getElementById("ds").value = "";
+                document.getElementById("cn").value = "";
+                document.getElementById("daa").value = "";
+                document.getElementById("dsal").value = "";
+                document.getElementById("cnl").value = "";
+                document.getElementById("rmipr").value = "";
+                document.getElementById("result").innerHTML = "";
+                document.getElementById("result").className = "";
+                window.scrollTo(0, 0);
+            }
+      </script>
+</body>
+</html>
